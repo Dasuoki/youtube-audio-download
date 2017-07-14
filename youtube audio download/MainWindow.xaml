@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:youtube_audio_download"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Youtube Audio Downloader" Height="400" Width="540">
     <Grid>
-        
+        <Button x:Name="btn" Content="Download" Margin="392,115,0,0" VerticalAlignment="Top" Click="btn_Click" HorizontalAlignment="Left" Width="90"/>
+        <TextBox x:Name="linkTBox" Height="23" Margin="50,50,50,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="linkTBox_TextChanged"/>
+        <Label Content="Youtube Link:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,19,0,0"/>
+        <ComboBox x:Name="formatSelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="50,115,0,0" SelectionChanged="formatSelect_SelectionChanged">
+        </ComboBox>
+        <ComboBox x:Name="outputSelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="225,115,0,0" SelectionChanged="outputSelect_SelectionChanged">
+        </ComboBox>
+        <Label Content="Video Format:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,84,0,0" Height="26"/>
+        <Label Content="Audio Output Format:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,84,0,0" Height="26"/>
+        <Label Content="by tehlurk" HorizontalAlignment="Left" Margin="444,333,0,0" VerticalAlignment="Top" Opacity="0.5"/>
+        <RichTextBox x:Name="outputTBox" HorizontalAlignment="Left" Height="120" VerticalAlignment="Top" Width="427" Margin="50,204,0,0">
+            <FlowDocument>
+                <Paragraph>
+                    <Run Text=""/>
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Label Content="Output:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,173,0,0"/>
+        <Label Content="Version 1.1" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,333,0,0" Opacity="0.5"/>
+
     </Grid>
 </Window>
