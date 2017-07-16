@@ -94,7 +94,7 @@ namespace youtube_audio_download
 
         private void formatSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            arg1 = "-f " + formatSelect.SelectedItem;
+            arg1 = "-i -f " + formatSelect.SelectedItem;
         }
 
         private void outputSelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -114,12 +114,12 @@ namespace youtube_audio_download
 
         private void playlistCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            arg4 = "--no-playlist";
+            arg4 = " --no-playlist";
         }
 
         private void playlistCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            arg4 = "--yes-playlist";
+            arg4 = " --yes-playlist";
         }
     }
 }
