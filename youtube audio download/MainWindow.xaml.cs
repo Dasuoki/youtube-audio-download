@@ -40,7 +40,7 @@ namespace youtube_audio_download
         {
             Process process = new Process();
 
-            process.StartInfo.FileName = Environment.CurrentDirectory + "\\thingythings\\youtube-dl.exe";
+            process.StartInfo.FileName = "youtube-dl.exe";
             process.StartInfo.Arguments = arg1 + arg2 + arg3 + " " + link;
 
             process.StartInfo.UseShellExecute = false;
