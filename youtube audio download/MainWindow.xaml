@@ -28,6 +28,7 @@
         <Label Content="Version 1.2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,333,0,0" Opacity="0.5"/>
         <ComboBox x:Name="qualitySelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="225,168,0,0" SelectionChanged="qualitySelect_SelectionChanged"/>
         <Label Content="Audio Quality:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,142,0,0"/>
+        <CheckBox x:Name="playlistCheckBox" Content="No playlist" HorizontalAlignment="Left" Margin="50,153,0,0" VerticalAlignment="Top" Checked="playlistCheckBox_Checked" Unchecked="playlistCheckBox_Unchecked"/>
 
     </Grid>
 </Window>

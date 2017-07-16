@@ -16,6 +16,7 @@ namespace youtube_audio_download
         private string arg1 = "";
         private string arg2 = "";
         private string arg3 = "";
+        private string arg4 = "";
 
         private readonly string[] videoOutputArgs = {"bestaudio", "bestvideo"};
         private readonly string[] audioOutputArgs= {"none", "best", "mp3", "aac"};
@@ -38,14 +39,19 @@ namespace youtube_audio_download
 
         private void download(string arg1, string arg2)
         {
-            Process process = new Process();
+            Process process = new Process
+            {
+                StartInfo =
+                {
+                    FileName = "youtube-dl.exe",
+                    Arguments = arg1 + arg2 + arg3 + arg4 + " " + link,
+                    UseShellExecute = false,
+                    RedirectStandardOutput = true,
+                    CreateNoWindow = true
+                }
+            };
 
-            process.StartInfo.FileName = "youtube-dl.exe";
-            process.StartInfo.Arguments = arg1 + arg2 + arg3 + " " + link;
 
-            process.StartInfo.UseShellExecute = false;
-            process.StartInfo.RedirectStandardOutput = true;
-            process.StartInfo.CreateNoWindow = true;
             process.OutputDataReceived += process_OutputDataReceived;
             process.EnableRaisingEvents = true;
                 
@@ -103,6 +109,17 @@ namespace youtube_audio_download
         {
             if (outputSelect.SelectedIndex != 0 || outputSelect.SelectedIndex != 1)
                 arg3 = " --audio-quality " + qualitySelect.SelectedItem;
+        }
+
+
+        private void playlistCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            arg4 = "--no-playlist";
+        }
+
+        private void playlistCheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            arg4 = "--yes-playlist";
         }
     }
 }
