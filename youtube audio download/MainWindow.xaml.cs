@@ -1,20 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Linq.Expressions;
-using System.IO;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+
 
 namespace youtube_audio_download
 {
@@ -27,18 +15,22 @@ namespace youtube_audio_download
         private string link = "";
         private string arg1 = "";
         private string arg2 = "";
+        private string arg3 = "";
 
-        private readonly string[] argsList1 = {"bestaudio", "bestvideo"};
-        private readonly string[] argsList2 = {"none", "best", "mp3", "aac"};
+        private readonly string[] videoOutputArgs = {"bestaudio", "bestvideo"};
+        private readonly string[] audioOutputArgs= {"none", "best", "mp3", "aac"};
+        private readonly string[] audioQualityArgs = {"320K", "256K", "192K", "128K", "96K"};
+
 
         public MainWindow()
         {
             InitializeComponent();
 
-            formatSelect.ItemsSource = argsList1;
+            formatSelect.ItemsSource = videoOutputArgs;
             formatSelect.SelectedIndex = 0;
-            outputSelect.ItemsSource = argsList2;
+            outputSelect.ItemsSource = audioOutputArgs;
             outputSelect.SelectedIndex = 0;
+            qualitySelect.ItemsSource = audioQualityArgs;
             arg1 = "-f " + formatSelect.SelectedItem;
             //arg2 = outputSelect.SelectedItem.ToString();
             outputTBox.IsReadOnly = true;
@@ -48,8 +40,8 @@ namespace youtube_audio_download
         {
             Process process = new Process();
 
-            process.StartInfo.FileName = "youtube-dl.exe";
-            process.StartInfo.Arguments = arg1 + arg2 + " " + link;
+            process.StartInfo.FileName = Environment.CurrentDirectory + "\\thingythings\\youtube-dl.exe";
+            process.StartInfo.Arguments = arg1 + arg2 + arg3 + " " + link;
 
             process.StartInfo.UseShellExecute = false;
             process.StartInfo.RedirectStandardOutput = true;
@@ -65,6 +57,7 @@ namespace youtube_audio_download
             //process.Close();
 
             process.Exited += process_HasExited;
+            
         }
 
         private void process_HasExited(object sender, EventArgs e)
@@ -102,7 +95,14 @@ namespace youtube_audio_download
         {
             if (outputSelect.SelectedIndex != 0)
                 arg2 = " -x --audio-format " + outputSelect.SelectedItem;
+            if (outputSelect.SelectedIndex == 0)
+                arg3 = "";
         }
 
+        private void qualitySelect_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (outputSelect.SelectedIndex != 0 || outputSelect.SelectedIndex != 1)
+                arg3 = " --audio-quality " + qualitySelect.SelectedItem;
+        }
     }
 }
