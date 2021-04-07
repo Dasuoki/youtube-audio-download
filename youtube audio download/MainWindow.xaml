@@ -1,34 +1,37 @@
-﻿<Window x:Class="youtube_audio_download.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:youtube_audio_download"
+        xmlns:WPF="clr-namespace:ConsoleControl.WPF;assembly=ConsoleControl.WPF" x:Class="youtube_audio_download.MainWindow"
         mc:Ignorable="d"
-        Title="Youtube Audio Downloader" Height="400" Width="540">
+        Title="Youtube Audio Downloader" Height="500" Width="540" WindowStyle="None" MouseDown="Window_MouseDown" ResizeMode="NoResize">
     <Grid>
-        <Button x:Name="btn" Content="Download" Margin="392,115,50,0" VerticalAlignment="Top" Click="btn_Click"/>
-        <TextBox x:Name="linkTBox" Height="23" Margin="50,50,50,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="linkTBox_TextChanged"/>
-        <Label Content="Youtube Link:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,19,0,0"/>
-        <ComboBox x:Name="formatSelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="50,115,0,0" SelectionChanged="formatSelect_SelectionChanged">
-        </ComboBox>
-        <ComboBox x:Name="outputSelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="225,115,0,0" SelectionChanged="outputSelect_SelectionChanged">
-        </ComboBox>
-        <Label Content="Video Format:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,84,0,0" Height="26"/>
-        <Label Content="Audio Output Format:" VerticalAlignment="Top" Margin="225,84,0,0" Height="26" HorizontalAlignment="Left" Width="126"/>
-        <Label Content="by tehlurk" HorizontalAlignment="Left" Margin="444,333,0,0" VerticalAlignment="Top" Opacity="0.5"/>
-        <RichTextBox x:Name="outputTBox" Height="120" VerticalAlignment="Top" Margin="50,204,50,0">
+        <Button x:Name="btn" Content="Download" Margin="392,158,0,0" VerticalAlignment="Top" Click="btn_Click" HorizontalAlignment="Left" Width="90"/>
+        <TextBox x:Name="linkTBox" Height="23" Margin="50,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" TextChanged="linkTBox_TextChanged" HorizontalAlignment="Left" Width="432"/>
+        <Label Content="Link:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,10,0,0"/>
+        <ComboBox x:Name="formatSelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="50,158,0,0" SelectionChanged="formatSelect_SelectionChanged"/>
+        <ComboBox x:Name="outputSelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="225,158,0,0" SelectionChanged="outputSelect_SelectionChanged"/>
+        <Label Content="Video/Audio" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,127,0,0" Height="26"/>
+        <Label Content="Audio Output Format:" VerticalAlignment="Top" Margin="225,127,0,0" Height="26" HorizontalAlignment="Left" Width="126"/>
+        <Label Content="by dasuoki" HorizontalAlignment="Left" Margin="444,456,0,0" VerticalAlignment="Top" Opacity="0.5"/>
+        <RichTextBox x:Name="outputTBox" Height="120" VerticalAlignment="Top" Margin="50,307,0,0" HorizontalAlignment="Left" Width="432">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>
                 </Paragraph>
             </FlowDocument>
         </RichTextBox>
-        <Label Content="Output:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,173,0,0"/>
-        <Label Content="Version 1.2" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,333,0,0" Opacity="0.5"/>
-        <ComboBox x:Name="qualitySelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="225,168,0,0" SelectionChanged="qualitySelect_SelectionChanged"/>
-        <Label Content="Audio Quality:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,142,0,0"/>
-        <CheckBox x:Name="playlistCheckBox" Content="No playlist" HorizontalAlignment="Left" Margin="50,153,0,0" VerticalAlignment="Top" Checked="playlistCheckBox_Checked" Unchecked="playlistCheckBox_Unchecked"/>
+        <Label Content="Output:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,276,0,0"/>
+        <Label Content="Version 1.3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,456,0,0" Opacity="0.5"/>
+        <ComboBox x:Name="qualitySelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="225,216,0,0" SelectionChanged="qualitySelect_SelectionChanged"/>
+        <Label Content="Audio Quality:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,185,0,0"/>
+        <CheckBox x:Name="playlistCheckBox" Content="Playlist YES/NO" HorizontalAlignment="Left" Margin="50,216,0,0" VerticalAlignment="Top" Checked="playlistCheckBox_Checked" Unchecked="playlistCheckBox_Unchecked" IsEnabled="False"/>
+        <Button Content="X" VerticalAlignment="Top" Height="30" Background="#FFD81717" FontSize="18" Click="X_Click" HorizontalAlignment="Right" Width="30" FontWeight="Bold"/>
+        <TextBox x:Name="path_textbox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="50,99,0,0"/>
+        <Label Content="Path:" HorizontalAlignment="Left" Margin="50,68,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="browse_btn" Content="Browse" HorizontalAlignment="Left" Margin="392,99,0,0" VerticalAlignment="Top" Width="90" Click="browse_btn_Click"/>
 
     </Grid>
 </Window>
