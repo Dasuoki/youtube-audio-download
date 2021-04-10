@@ -32,6 +32,7 @@
         <TextBox x:Name="path_textbox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="320" Margin="50,99,0,0"/>
         <Label Content="Path:" HorizontalAlignment="Left" Margin="50,68,0,0" VerticalAlignment="Top"/>
         <Button x:Name="browse_btn" Content="Browse" HorizontalAlignment="Left" Margin="392,99,0,0" VerticalAlignment="Top" Width="90" Click="browse_btn_Click"/>
+        <Button x:Name="update_btn" Content="Update" HorizontalAlignment="Left" Margin="392,218,0,0" VerticalAlignment="Top" Width="90" Click="update_btn_Click"/>
 
     </Grid>
 </Window>
