@@ -3,6 +3,7 @@ using System;
 using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.IO;
+using System.Reflection;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Forms;
@@ -48,6 +49,8 @@ namespace youtube_audio_download
             //arg2 = outputSelect.SelectedItem.ToString();
             outputTBox.IsReadOnly = true;
             path_textbox.Text = "";
+
+            check_for_binaries();
         }
 
         private void download()
@@ -176,30 +179,60 @@ namespace youtube_audio_download
 
         private void update_btn_Click(object sender, RoutedEventArgs e)
         {
-            Process process = new Process
+            if (!File.Exists("youtube-dl.exe"))
             {
-                StartInfo =
+                download_youtube_dl();
+                MessageBox.Show("Update completed!", "Done", MessageBoxButton.OK);
+            }
+
+            else
+            {
+                Process process = new Process
                 {
-                    FileName = "youtube-dl.exe",
-                    Arguments = "-U",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
-                }
-            };
+                    StartInfo =
+                    {
+                        FileName = "youtube-dl.exe",
+                        Arguments = "-U",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    }
+                };
 
 
-            process.OutputDataReceived += process_OutputDataReceived;
-            process.EnableRaisingEvents = true;
+                process.OutputDataReceived += process_OutputDataReceived;
+                process.EnableRaisingEvents = true;
 
-            process.Start();
+                process.Start();
 
-            process.BeginOutputReadLine();
+                process.BeginOutputReadLine();
 
-            //process.WaitForExit();
-            //process.Close();
+                //process.WaitForExit();
+                //process.Close();
 
-            process.Exited += process_HasExited;
+                //process.Exited += process_HasExited;
+
+                MessageBox.Show("Update completed!", "Done", MessageBoxButton.OK);
+
+            }
+        }
+
+        private void download_youtube_dl()
+        {
+            using (var client = new System.Net.WebClient())
+            {
+                client.DownloadFile("https://youtube-dl.org/downloads/latest/youtube-dl.exe", "youtube-dl.exe");
+            }
+        }
+
+        private void check_for_binaries()
+        {
+            if (!File.Exists("youtube-dl.exe"))
+                File.WriteAllBytes("youtube-dl.exe", Properties.Resources.youtube_dl);
+                //download_youtube_dl();
+
+            if (!File.Exists("ffmpeg.exe"))
+                File.WriteAllBytes("ffmpeg.exe", Properties.Resources.ffmpeg);
         }
     }
 }
