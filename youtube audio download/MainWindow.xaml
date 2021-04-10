@@ -24,7 +24,6 @@
             </FlowDocument>
         </RichTextBox>
         <Label Content="Output:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="50,276,0,0"/>
-        <Label Content="Version 1.3" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,456,0,0" Opacity="0.5"/>
         <ComboBox x:Name="qualitySelect" HorizontalAlignment="Left" VerticalAlignment="Top" Width="120" Margin="225,216,0,0" SelectionChanged="qualitySelect_SelectionChanged"/>
         <Label Content="Audio Quality:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="225,185,0,0"/>
         <CheckBox x:Name="playlistCheckBox" Content="Playlist YES/NO" HorizontalAlignment="Left" Margin="50,216,0,0" VerticalAlignment="Top" Checked="playlistCheckBox_Checked" Unchecked="playlistCheckBox_Unchecked" IsEnabled="False"/>
