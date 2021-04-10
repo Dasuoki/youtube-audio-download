@@ -19,7 +19,7 @@ namespace youtube_audio_download
         private string arg2 = "";
         private string arg3 = "";
         private string arg4 = "";
-        private string title = "";
+        private string path = "";
         private bool isdownload = false;
 
         private readonly string[] videoOutputArgs = {"Audio", "Video"};
@@ -39,11 +39,12 @@ namespace youtube_audio_download
             qualitySelect.ItemsSource = audioQualityArgs;
             qualitySelect.SelectedIndex = 0;
 
+            arg1 = " -f bestaudio";
             arg2 = " -x --audio-format " + outputSelect.SelectedItem;
             arg3 = " --audio-quality " + qualitySelect.SelectedItem;
+            arg4 = "";
 
             //arg1 = "-f " + formatSelect.SelectedItem;
-            arg1 = " -f bestaudio";
             //arg2 = outputSelect.SelectedItem.ToString();
             outputTBox.IsReadOnly = true;
             path_textbox.Text = "";
@@ -56,10 +57,11 @@ namespace youtube_audio_download
                 StartInfo =
                 {
                     FileName = "youtube-dl.exe",
-                    Arguments = "-o " + path_textbox.Text + " " + arg1 + arg2 + arg3 + " " + link,
+                    Arguments = /*"-o " + path_textbox.Text + " " +*/ arg1 + arg2 + arg3 + " " + link,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
-                    CreateNoWindow = true
+                    CreateNoWindow = true,
+                    WorkingDirectory = path
                 }
             };
 
@@ -82,7 +84,7 @@ namespace youtube_audio_download
        
         private void process_HasExited(object sender, EventArgs e)
         {
-            //MessageBox.Show("DONE!", "Done", MessageBoxButton.OK);
+            MessageBox.Show("DONE!", "Done", MessageBoxButton.OK);
         }
 
         private void process_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -166,7 +168,9 @@ namespace youtube_audio_download
             dialog.IsFolderPicker = true;
             if (dialog.ShowDialog() == CommonFileDialogResult.Ok)
             {
-                path_textbox.Text = "\"" + dialog.FileName + "\\" + "%%(title)s.%%(ext)s\"";
+                path_textbox.Text = dialog.FileName;
+                path = dialog.FileName;
+                //path_textbox.Text = "\"" + dialog.FileName + "\\" + "%%(title)s.%%(ext)s\"";
             }
         }
 
