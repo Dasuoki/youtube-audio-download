@@ -43,7 +43,7 @@ namespace youtube_audio_download
             arg1 = " -f bestaudio";
             arg2 = " -x --audio-format " + outputSelect.SelectedItem;
             arg3 = " --audio-quality " + qualitySelect.SelectedItem;
-            arg4 = "";
+            arg4 = " --no-playlist";
 
             //arg1 = "-f " + formatSelect.SelectedItem;
             //arg2 = outputSelect.SelectedItem.ToString();
@@ -60,7 +60,7 @@ namespace youtube_audio_download
                 StartInfo =
                 {
                     FileName = "youtube-dl.exe",
-                    Arguments = /*"-o " + path_textbox.Text + " " +*/ arg1 + arg2 + arg3 + " " + link,
+                    Arguments = "-o %(title)s.%(ext)s" + arg1 + arg2 + arg3 + arg4 + " " + link,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
                     CreateNoWindow = true,
@@ -148,12 +148,12 @@ namespace youtube_audio_download
 
         private void playlistCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            arg4 = " --no-playlist";
+            arg4 = " --yes-playlist";
         }
 
         private void playlistCheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
-            arg4 = " --yes-playlist";
+            arg4 = " --no-playlist";
         }
 
         private void Window_MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
