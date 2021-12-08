@@ -59,7 +59,7 @@ namespace youtube_audio_download
             {
                 StartInfo =
                 {
-                    FileName = "youtube-dl.exe",
+                    FileName = "yt-dlp.exe",
                     Arguments = "-o %(title)s.%(ext)s" + arg1 + arg2 + arg3 + arg4 + " " + link,
                     UseShellExecute = false,
                     RedirectStandardOutput = true,
@@ -179,10 +179,10 @@ namespace youtube_audio_download
 
         private void update_btn_Click(object sender, RoutedEventArgs e)
         {
-            if (!File.Exists("youtube-dl.exe"))
+            if (!File.Exists("yt-dlp.exe"))
             {
                 download_youtube_dl();
-                MessageBox.Show("Update completed!", "Done", MessageBoxButton.OK);
+                MessageBox.Show("yt-dlp downloaded!", "Done", MessageBoxButton.OK);
             }
 
             else
@@ -191,7 +191,7 @@ namespace youtube_audio_download
                 {
                     StartInfo =
                     {
-                        FileName = "youtube-dl.exe",
+                        FileName = "yt-dlp.exe",
                         Arguments = "-U",
                         UseShellExecute = false,
                         RedirectStandardOutput = true,
@@ -221,15 +221,14 @@ namespace youtube_audio_download
         {
             using (var client = new System.Net.WebClient())
             {
-                client.DownloadFile("https://youtube-dl.org/downloads/latest/youtube-dl.exe", "youtube-dl.exe");
+                client.DownloadFile("https://github.com/yt-dlp/yt-dlp/releases/latest/download/yt-dlp.exe", "yt-dlp.exe");
             }
         }
 
         private void check_for_binaries()
         {
-            if (!File.Exists("youtube-dl.exe"))
-                File.WriteAllBytes("youtube-dl.exe", Properties.Resources.youtube_dl);
-                //download_youtube_dl();
+            if (!File.Exists("yt-dlp.exe"))
+                File.WriteAllBytes("yt-dlp.exe", Properties.Resources.yt_dlp);
 
             if (!File.Exists("ffmpeg.exe"))
                 File.WriteAllBytes("ffmpeg.exe", Properties.Resources.ffmpeg);

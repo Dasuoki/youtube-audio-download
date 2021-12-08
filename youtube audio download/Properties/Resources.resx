@@ -121,7 +121,7 @@
   <data name="ffmpeg" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\bin\Release\ffmpeg.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="youtube_dl" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\youtube-dl.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="yt_dlp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\yt-dlp.exe;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
